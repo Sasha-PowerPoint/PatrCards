@@ -35,8 +35,6 @@ export const useCards = () => {
         const prevCardsCopy = [...cards];
 
         prevCardsCopy.sort((a, b) => SUITS_ORDER_MAP[a.value] - SUITS_ORDER_MAP[b.value]);
-    
-        console.log(prevCardsCopy);
 
         setCards(prevCardsCopy);
     }, [cards]);
