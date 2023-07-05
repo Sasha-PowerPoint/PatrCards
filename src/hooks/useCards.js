@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { CardsAPI } from "@/api";
-import { SUITS_ORDER_MAP } from '@/utils';
+import { SUITS_ORDER_MAP, imageUrlToBase64 } from '@/utils';
 
 export const useCards = () => {
     const [cards, setCards] = useState(Array(5).fill(null));
@@ -22,7 +22,12 @@ export const useCards = () => {
             if (prevCards.find((card) => card?.code === fetchedCards[0].code)) {
                 await fetchCardRecursively();
             } else {
-                prevCards[index] = fetchedCards[0];
+                const newCard = fetchedCards[0];
+
+                const base64 = await imageUrlToBase64(newCard.images.svg);
+                newCard.images.svg = base64;
+
+                prevCards[index] = newCard;
                 setCards(prevCards);
             }
         }
