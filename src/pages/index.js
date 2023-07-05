@@ -1,5 +1,3 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
 import { Card } from '@/components';
 import { useCards } from '@/hooks';
 import { useCallback } from 'react';
