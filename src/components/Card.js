@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState, useEffect } from 'react';
 
-export const Card = ({ card, onClick}) => {
+export const Card = ({ index, card, onClick}) => {
     const [localState, setLocalState] = useState(null);
 
     useEffect(() => {
@@ -15,8 +15,8 @@ export const Card = ({ card, onClick}) => {
     },[card]);
 
     return (
-        <div className={`perspective-1000 ${!card ? "cursor-pointer" : 'pointer-events-none'}`} onClick={onClick}>
-            <div className={`w-[226px] h-[314px] relative transition-transform duration-300 origin-center ${card ? 'rotate-y-180' : ''}`} style={{ transformStyle: "preserve-3d" }}>
+        <div className={`perspective-1000 ${!card ? "cursor-pointer" : 'pointer-events-none'}`} onClick={onClick} data-index={index}>
+            <div className={`w-[226px] h-[314px] relative transition-transform duration-300 origin-center transformStyle-preserve ${card ? 'rotate-y-180' : ''}`}>
                 <div className="absolute backface-hidden w-full h-full">
                     <Image
                         src="https://www.deckofcardsapi.com/static/img/back.png"

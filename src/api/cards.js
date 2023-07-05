@@ -1,5 +1,5 @@
 const httpClient = async (url, options) => {
-    const response = await fetch(`https://www.deckofcardsapi.com/api/deck/${url}`, options);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/deck/${url}`, options);
     return response.json();
 };
 

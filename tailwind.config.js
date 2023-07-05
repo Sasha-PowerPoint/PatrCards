@@ -27,6 +27,14 @@ const backfaceVisibility = plugin(function ({ addUtilities }) {
   });
 });
 
+const transformStyle = plugin(function ({ addUtilities }) {
+  addUtilities({
+    '.transformStyle-preserve': {
+      transformStyle: "preserve-3d"
+    },
+  });
+});
+
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -42,5 +50,5 @@ module.exports = {
       },
     },
   },
-  plugins: [rotateY, perspective, backfaceVisibility],
+  plugins: [rotateY, perspective, backfaceVisibility, transformStyle],
 }
